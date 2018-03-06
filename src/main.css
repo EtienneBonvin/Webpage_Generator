@@ -1,0 +1,25 @@
+body{
+    border: 1px solid black;
+}
+
+.separation{
+    height: 10px;
+}
+
+#banner{
+    height: 100px;
+}
+
+#logo{
+    height: 100px;
+}
+
+#headband{
+    height: 20px;
+}
+
+#footer{
+    font-size: 0.7em;
+    text-align: right;
+    border-top: 1px solid black;
+}
