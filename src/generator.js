@@ -66,6 +66,14 @@ function WebPage(){
     
     
     /**
+    * Clean the content of the webpage.
+    */
+    this.clearContent = function(){
+        content.empty();
+    }
+    
+    
+    /**
     * Sets an informations footer at the bottom of the web page.
     *
     * @param String message : the message to display in the footer.
@@ -132,5 +140,43 @@ function Tab(name, onClick){
         });
         element.className += "tab";
         return element;
+    }
+}
+
+
+/**
+* Row class. Represents a row of the content of the webpage.
+*
+* @param String ... sizes : the list of sizes in percent of the size of each cells.
+*/
+function Row(...sizes){
+    this.container = sizedDiv("100%");
+    this.cells = [];
+    for(var i = 0; i < sizes.length; i++){
+        this.cells.push(sizedDiv(sizes[i]));
+        parenting(this.container, this.cells[i]);
+    }
+    
+    
+    /**
+    * Adds some content in a cell of the row.
+    *
+    * @param int index : the index of the cell in which the content should be added.
+    * @param HTMLObject content : the content to add.
+    */
+    this.addInCell = function(index, content){
+        if(index >= 0 && index < this.cells.length){
+            parenting(this.cells[index], content);
+        }
+    }
+    
+    
+    /**
+    * Adds the row to the content of the page given as argument.
+    *
+    * @param Webpage page : the webpage in which the row should be added.
+    */
+    this.addInPage = function(page){
+        page.addContent(this.container);
     }
 }

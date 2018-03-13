@@ -22,7 +22,18 @@ $('document').ready(function(){
     //page.setHeadband("red");
     
     /* Sets the actual content of the page */
-    page.addContent(paragraph("Hello world !"));
+    
+    var row1 = new Row("33%", "33%", "33%");
+    row1.addInCell(0, paragraph("Hello world !"));
+    row1.addInPage(page);
+    
+    var row2 = new Row("33%", "33%", "33%");
+    row2.addInCell(1, paragraph("Hello world !"));
+    row2.addInPage(page);
+    
+    var row3 = new Row("33%", "33%", "33%");
+    row3.addInCell(2, paragraph("Hello world !"));
+    row3.addInPage(page);
     
     /* Set the footer of the page */
     page.setFooter("Test application. All rights reserved.");
