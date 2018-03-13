@@ -21,8 +21,7 @@ $('document').ready(function(){
     /* If no navigation is used, one can add a colored headband to separate banner and content */
     //page.setHeadband("red");
     
-    /* Sets the actual content of the page */
-    page.addContent(paragraph("Hello world !"));
+    showTab1();
     
     /* Set the footer of the page */
     page.setFooter("Test application. All rights reserved.");
@@ -31,11 +30,26 @@ $('document').ready(function(){
 
 /* Function called when the first tab is clicked */
 function showTab1(){
-    page.addContent(paragraph("Switch to tab 1 !"));
+    page.clearContent();
+    
+    /* Sets the actual content of the page */
+    var row1 = new Row("33%", "33%", "33%");
+    row1.addInCell(0, paragraph("Hello world !"));
+    row1.addInPage(page);
+    
+    var row2 = new Row("33%", "33%", "33%");
+    row2.addInCell(1, paragraph("Hello world !"));
+    row2.addInPage(page);
+    
+    var row3 = new Row("33%", "33%", "33%");
+    row3.addInCell(2, paragraph("Hello world !"));
+    row3.addInPage(page);
 }
 
 
 /* Function called when the second tab is clicked */
 function showTab2(){
+    page.clearContent();
+    
     page.addContent(paragraph("Switch to tab 2 !"));
 }
