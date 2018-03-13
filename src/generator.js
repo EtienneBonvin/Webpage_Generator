@@ -69,7 +69,7 @@ function WebPage(){
     * Clean the content of the webpage.
     */
     this.clearContent = function(){
-        content.empty();
+        $("#content").empty();
     }
     
     
