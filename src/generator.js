@@ -172,11 +172,65 @@ function Row(...sizes){
     
     
     /**
+    * Centers the content of the cells at the given index.
+    *
+    * @param int index : the index of the cell in which the content should be centered.
+    */
+    this.centerContentInCell = function(index){
+        if(index >= 0 && index < this.cells.length){
+            this.cells[index].style.textAlign = "center";
+        }
+    }
+    
+    
+    /**
     * Adds the row to the content of the page given as argument.
     *
     * @param Webpage page : the webpage in which the row should be added.
     */
     this.addInPage = function(page){
         page.addContent(this.container);
+    }
+}
+
+
+/**
+* Panel class. Represents a panel with borders.
+*
+* @param String width : the width of the panel in percent.
+* @param String borderStyle : the style of the border to apply using CSS convention.
+* @param String borderRadius : the border radius to apply.
+*/
+function Panel(width, borderStyle, borderRadius){
+    this.container = sizedDiv(width);
+    this.container.style.border = borderStyle;
+    this.container.style.borderRadius = borderRadius;
+    
+    
+    /**
+    * Adds content to the panel.
+    *
+    * @param HTMLElement content : the content to add to the panel.
+    */
+    this.addContent = function(content){
+        parenting(this.container, content);
+    }
+    
+    
+    /**
+    * Centers the content of the panel.
+    */
+    this.centerContent = function(){
+        this.container.style.textAlign = "center";
+    }
+    
+    
+    /**
+    * Returns the panel as a HTMLElement.
+    *
+    * @return HTMLElement : the created panel.
+    */
+    this.toElement = function(){
+        return this.container;
     }
 }
