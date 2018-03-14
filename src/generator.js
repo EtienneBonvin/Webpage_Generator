@@ -35,7 +35,9 @@ function WebPage(){
         var imageDiv = sizedDiv("40%");
         parenting(imageDiv, image(src, "logo"));
         var pageName = sizedDiv("60%");
-        parenting(pageName, h1(name));
+        var nameH1 = h1(name);
+        nameH1.style.marginRight = "30px";
+        parenting(pageName, nameH1);
         pageName.style.textAlign = "right";
         parenting(this.banner, imageDiv);
         parenting(this.banner, pageName);
@@ -79,7 +81,10 @@ function WebPage(){
     * @param String message : the message to display in the footer.
     */
     this.setFooter = function(message){
-        footer.append(message);
+        var footMessage = h4(message);
+        footMessage.style.textAlign = "right";
+        footMessage.style.margin = "2px";
+        footer.append(footMessage);
     }
     
     

@@ -116,6 +116,20 @@ function h2(text){
 
 
 /**
+* Create a header H4.
+*
+* @param String text : the text written in the header.
+*
+* @return a HTML element representing a header H4.
+*/
+function h4(text){
+    var element = document.createElement("h4");
+    element.innerHTML = text;
+    return element;
+}
+
+
+/**
 * Creates a little white band to separate elements.
 *
 * @return and HTML div element representing a white separation.

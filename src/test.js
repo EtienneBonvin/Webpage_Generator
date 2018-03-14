@@ -42,10 +42,13 @@ function showTab1(){
     row1.addInPage(page);
     
     var row2 = new Row("33%", "33%", "33%");
-    var panel2 = new Panel("100%", "1px solid black", "20px");
+    var panel2 = new Panel("95%", "1px solid black", "20px");
     panel2.addContent(paragraph("Hello world !"));
     panel2.centerContent();
-    row2.addInCell(1, panel2.toElement());
+    var panel3 = new Panel("100%", "1px solid black", "20px");
+    panel3.addContent(panel2.toElement());
+    panel3.centerContent();
+    row2.addInCell(1, panel3.toElement());
     row2.addInPage(page);
     
     var row3 = new Row("33%", "33%", "33%");
