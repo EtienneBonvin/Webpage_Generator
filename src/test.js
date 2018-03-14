@@ -34,11 +34,18 @@ function showTab1(){
     
     /* Sets the actual content of the page */
     var row1 = new Row("33%", "33%", "33%");
-    row1.addInCell(0, paragraph("Hello world !"));
+    var panel1 = new Panel("50%", "2px dashed red", "20px");
+    panel1.addContent(paragraph("Hello world !"));
+    panel1.centerContent();
+    row1.addInCell(0, panel1.toElement());
+    row1.centerContentInCell(0);
     row1.addInPage(page);
     
     var row2 = new Row("33%", "33%", "33%");
-    row2.addInCell(1, paragraph("Hello world !"));
+    var panel2 = new Panel("100%", "1px solid black", "20px");
+    panel2.addContent(paragraph("Hello world !"));
+    panel2.centerContent();
+    row2.addInCell(1, panel2.toElement());
     row2.addInPage(page);
     
     var row3 = new Row("33%", "33%", "33%");
