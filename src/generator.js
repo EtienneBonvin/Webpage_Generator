@@ -189,6 +189,16 @@ function Row(...sizes){
     
     
     /**
+    * Centers the content of all the cells.
+    */
+    this.centerAllCells = function(){
+        for(var i = 0; i < this.cells.length; i++){
+            this.centerContentInCell(i);
+        }
+    }
+    
+    
+    /**
     * Adds the row to the content of the page given as argument.
     *
     * @param Webpage page : the webpage in which the row should be added.
@@ -227,6 +237,29 @@ function Panel(width, borderStyle, borderRadius){
     */
     this.centerContent = function(){
         this.container.style.textAlign = "center";
+    }
+    
+    
+    /**
+    * Sets the background of the panel to a given color.
+    *
+    * @param String color : the hex string of the color in which to paint the panel.
+    */
+    this.setBackground = function(color){
+        this.container.style.background = color;
+    }
+    
+    
+    
+    /**
+    * Adds a picture inside the panel.
+    * The border disappears, find a way to make it visible again.
+    */
+    this.addPicture = function(src){
+        var srcImage = image("res/pics/EPFL-Logo.jpg");
+        srcImage.style.width = "100%";
+        srcImage.style.height = "100%";
+        parenting(this.container, srcImage);
     }
     
     

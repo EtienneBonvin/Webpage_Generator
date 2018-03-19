@@ -38,7 +38,10 @@ function showTab1(){
     panel1.addContent(paragraph("Hello world !"));
     panel1.centerContent();
     row1.addInCell(0, panel1.toElement());
-    row1.centerContentInCell(0);
+    row1.centerAllCells();
+    var imagePanel = new Panel("50%", "1 px solid black", "20px");
+    imagePanel.addPicture("res/pics/EPFL-Logo.jpg");
+    row1.addInCell(2, imagePanel.toElement());
     row1.addInPage(page);
     
     var row2 = new Row("33%", "33%", "33%");
@@ -48,6 +51,8 @@ function showTab1(){
     var panel3 = new Panel("100%", "1px solid black", "20px");
     panel3.addContent(panel2.toElement());
     panel3.centerContent();
+    panel3.setBackground("black");
+    panel2.setBackground("white");
     row2.addInCell(1, panel3.toElement());
     row2.addInPage(page);
     
