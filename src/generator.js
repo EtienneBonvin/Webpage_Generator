@@ -13,6 +13,9 @@ function WebPage(){
     this.headband = centeredDivWithId("100%", "headband");
     this.content = centeredDivWithId("100%", "content");
     this.footer = centeredDivWithId("95%", "footer");
+    var style = document.createElement('style');
+    document.head.appendChild(style);
+    this.stylesheet = style.sheet;
     
     $("body").append(this.banner);
     $("body").append(separation());
@@ -94,14 +97,14 @@ function WebPage(){
     * @param String color : the color of the navigation bar.
     * @param ...Tab tabs : the tabs of the navigation bar.
     */
-    this.setNavigation = function(color, ...tabs){
+    this.setNavigation = function(color, hoverColor, ...tabs){
         var nav = sizedDiv("100%");
         for(var i=0; i < tabs.length; i++){
             parenting(nav, tabs[i].createTab());
         }
         this.navigation.style.background = color;
         this.navigation.append(nav);
-        
+        this.stylesheet.insertRule('.tab:hover{background : '+hoverColor+'}', 0);
     }
 }
 

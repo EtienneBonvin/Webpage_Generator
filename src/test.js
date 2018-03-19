@@ -16,7 +16,10 @@ $('document').ready(function(){
     page.setBanner("res/pics/EPFL-Logo.jpg", "Test application");
     
     /* Defines the navigation bar, here only two tabs */
-    page.setNavigation("red", new Tab("Tab1", function(){showTab1()}), new Tab("Tab2", function(){showTab2()}));
+    page.setNavigation("red", "#800000", 
+            new Tab("Presentation", function(){showTab1()}),
+            new Tab("Documentation", function(){showTab2()}),
+            new Tab("Test", function(){showTab3()}));
     
     /* If no navigation is used, one can add a colored headband to separate banner and content */
     //page.setHeadband("red");
@@ -30,6 +33,41 @@ $('document').ready(function(){
 
 /* Function called when the first tab is clicked */
 function showTab1(){
+    page.clearContent();
+    
+    var row1 = new Row("10%", "80%", "10%");
+    row1.addInCell(1, image("res/pics/easy.gif"));
+    row1.centerContentInCell(1);
+    row1.addInPage(page);
+    
+    var row2 = new Row("40%", "60%");
+    var upDiv = sizedDiv("100%");
+    upDiv.style.height = "50%";
+    upDiv.style.textAlign = "center";
+    parenting(upDiv, h2("Tired of having to spend hours to develop a website ?"));
+    var downDiv = sizedDiv("100%");
+    downDiv.style.height = "50%";
+    downDiv.style.textAlign = "center";
+    parenting(downDiv, h2("Don't want to spend hundreds in its development by a professional ?"));
+    row2.addInCell(0, upDiv);
+    row2.addInCell(0, downDiv);
+    
+    row2.addInCell(1, paragraph("<b>WPG</b> brings you an easy and convenient, readable way to <b>quickly develop simple websites</b>."));
+    row2.addInCell(1, paragraph("<b>WPG</b> is a library containing simple, meaningful methods that will allow you to <b>efficiently</b> create your website. It has been thought in a way that the elements can be easily created, arranged and placed on the webpage in the <b>most convenient way possible</b>."));
+    row2.addInCell(1, paragraph("<b>Inspired by Bootstrap</b>, the main structure of the library is the row, representing a row in the page. However, the way of creating and managing them has been made such that it is easier and more concrete to use."))
+    
+    row2.addInPage(page);
+}
+
+
+function showTab2(){
+    page.clearContent();
+    page.addContent(paragraph("Add documentation."));
+}
+
+
+/* Function called when the second tab is clicked */
+function showTab3(){
     page.clearContent();
     
     /* Sets the actual content of the page */
@@ -59,12 +97,4 @@ function showTab1(){
     var row3 = new Row("33%", "33%", "33%");
     row3.addInCell(2, paragraph("Hello world !"));
     row3.addInPage(page);
-}
-
-
-/* Function called when the second tab is clicked */
-function showTab2(){
-    page.clearContent();
-    
-    page.addContent(paragraph("Switch to tab 2 !"));
 }
