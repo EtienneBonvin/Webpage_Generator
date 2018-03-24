@@ -11,7 +11,10 @@ function WebPage(){
     this.banner = centeredDivWithId("100%", "banner");
     this.topNavigation = centeredDivWithId("100%", "topNavigation");
     this.headband = centeredDivWithId("100%", "headband");
+    this.sideNavigation = centeredDivWithId("0%", "sideNavigation");
+    this.contentContainer = centeredDivWithId("100%", "contentContainer");
     this.content = centeredDivWithId("100%", "content");
+    parenting(this.contentContainer, this.content);
     this.footer = centeredDivWithId("95%", "footer");
     var style = document.createElement('style');
     document.head.appendChild(style);
@@ -22,7 +25,7 @@ function WebPage(){
     $("body").append(this.topNavigation);
     $("body").append(this.headband);
     $("body").append(separation());
-    $("body").append(this.content);
+    $("body").append(this.contentContainer);
     $("body").append(separation());
     $("body").append(this.footer);
     
@@ -97,7 +100,7 @@ function WebPage(){
     * @param String color : the color of the navigation bar.
     * @param ...Tab tabs : the tabs of the navigation bar.
     */
-    this.setNavigation = function(color, hoverColor, ...tabs){
+    this.setTopNavigation = function(color, hoverColor, ...tabs){
         var nav = sizedDiv("100%");
         for(var i=0; i < tabs.length; i++){
             parenting(nav, tabs[i].createTab());
@@ -105,6 +108,41 @@ function WebPage(){
         this.topNavigation.style.background = color;
         this.topNavigation.append(nav);
         this.stylesheet.insertRule('.tab:hover{background : '+hoverColor+'}', 0);
+    }
+    
+    
+    /**
+    * Set a navigation on the side of the screen.
+    *
+    * @param String color : hex string of the background color of the navigation.
+    * @param String fontColor : hex string of the font color of the tabs in the navigation.
+    * @ param ...Tab : the tabs to put in the side navigation.
+    */
+    this.setSideNavigation = function(color, fontColor, ...tabs){
+        var row = new Row("20%", "80%");
+        var sideNav = centeredDivWithId("100%");
+        for(var i = 0; i < tabs.length; i++){
+            parenting(sideNav, clickableElement("p", "<b>"+tabs[i].getName()+"</b>", tabs[i].changeTab()));
+        }
+        
+        sideNav.style.border = "1px solid black";
+        sideNav.style.paddingLeft = "10px";
+        sideNav.style.borderRadius = "10px";
+        sideNav.style.background = color;
+        sideNav.style.color = fontColor;
+        
+        row.addInCell(0, sideNav);
+        row.addInCell(1, this.content);
+        parenting(this.contentContainer, row.asElement());
+    }
+    
+    
+    /**
+    * Remove the side navigation.
+    */
+    this.removeSideNavigation = function(){
+        $("#contentContainer").empty();
+        parenting(this.contentContainer, this.content);
     }
     
     
@@ -132,11 +170,10 @@ function Tab(name, onClick){
     
     
     /**
-    * Unused for now.
     * Returns the on click function of the tab.
     */
     this.changeTab = function(){
-        this.onClick();
+        return this.onClick;
     }
     
     
@@ -228,6 +265,16 @@ function Row(...sizes){
     */
     this.addInPage = function(page){
         page.addContent(this.container);
+    }
+    
+    
+    /**
+    * Give the row as an HTML element.
+    *
+    * @return the row as an HTML element.
+    */
+    this.asElement = function(){
+        return this.container;
     }
 }
 
