@@ -9,7 +9,7 @@
 */
 function WebPage(){
     this.banner = centeredDivWithId("100%", "banner");
-    this.navigation = centeredDivWithId("100%", "navigation");
+    this.topNavigation = centeredDivWithId("100%", "topNavigation");
     this.headband = centeredDivWithId("100%", "headband");
     this.content = centeredDivWithId("100%", "content");
     this.footer = centeredDivWithId("95%", "footer");
@@ -19,7 +19,7 @@ function WebPage(){
     
     $("body").append(this.banner);
     $("body").append(separation());
-    $("body").append(this.navigation);
+    $("body").append(this.topNavigation);
     $("body").append(this.headband);
     $("body").append(separation());
     $("body").append(this.content);
@@ -102,9 +102,19 @@ function WebPage(){
         for(var i=0; i < tabs.length; i++){
             parenting(nav, tabs[i].createTab());
         }
-        this.navigation.style.background = color;
-        this.navigation.append(nav);
+        this.topNavigation.style.background = color;
+        this.topNavigation.append(nav);
         this.stylesheet.insertRule('.tab:hover{background : '+hoverColor+'}', 0);
+    }
+    
+    
+    /**
+    * Sets the font size for the entire webpage.
+    *
+    * @param String size : the font size to set.
+    */
+    this.setFontSize = function(size){
+        document.body.style.fontSize = size;
     }
 }
 
@@ -198,6 +208,16 @@ function Row(...sizes){
         for(var i = 0; i < this.cells.length; i++){
             this.centerContentInCell(i);
         }
+    }
+    
+    
+    /**
+    * Sets the size of the font in the row.
+    *
+    * @param String size : the size of the row.
+    */
+    this.setFontSize = function(size){
+        this.container.style.fontSize = size;
     }
     
     
