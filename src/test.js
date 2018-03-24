@@ -17,24 +17,24 @@ $('document').ready(function(){
     page.setBanner("res/pics/logo1.png", "Webpage generator");
     
     /* Defines the navigation bar, here only two tabs */
-    page.setNavigation("#4073c4", "#2a4672", 
-            new Tab("Presentation", function(){showTab1()}),
-            new Tab("Documentation", function(){showTab2()}),
-            new Tab("Test", function(){showTab3()}));
+    page.setTopNavigation("#4073c4", "#2a4672", 
+            new Tab("Presentation", function(){showPresentation()}),
+            new Tab("Documentation", function(){showDocumentation()}),
+            new Tab("Test", function(){showTest()}));
     
     /* If no navigation is used, one can add a colored headband to separate banner and content */
     //page.setHeadband("red");
     
-    showTab1();
+    showPresentation();
     
     /* Set the footer of the page */
     page.setFooter("Test application. All rights reserved.");
 });
 
 
-/* Function called when the first tab is clicked */
-function showTab1(){
-    page.clearContent();
+/* Show the website presentation */
+function showPresentation(){
+    clearContentAndSN();
     
     var row1 = new Row("10%", "80%", "10%");
     row1.addInCell(1, image("res/pics/easy.gif"));
@@ -61,16 +61,43 @@ function showTab1(){
 }
 
 
-function showTab2(){
+/* Show documentation page */
+function showDocumentation(){
+    clearContentAndSN();
+    
+    page.setSideNavigation("#4073c4", "white",
+        new Tab("Page", function(){pageDocumentation()}),
+        new Tab("Row", function(){rowDocumentation()})
+    );
+    
+    pageDocumentation();
+}
+
+
+/* Display page's documentation. Keeps side navigation */
+function pageDocumentation(){
     page.clearContent();
-    var row1 = new Row("10%", "80%", "10%");
-    row1.addInCell(1, h1("Row"));
-    row1.addInCell(1, paragraph("A row is the base structure of the webpage. It allows you to have a complete control of the placement of the content on the page."));
+    var row1 = new Row("5%", "85%", "10%");
+    row1.addInCell(1, h1("Page"));
+    row1.addInCell(1, paragraph("The page is the main object of this project. As you probably guessed, it represents the webpage you'll be building."));
     row1.addInPage(page);
     
     var row2 = new Row("15%", "75%", "10%");
     row2.addInCell(1, bannerDoc);
     row2.addInCell(1, footerDoc);
+    row2.addInPage(page);
+}
+
+
+/* Display row's documentation. Keeps side navigation */
+function rowDocumentation(){
+    page.clearContent();
+    var row1 = new Row("5%", "85%", "10%");
+    row1.addInCell(1, h1("Row"));
+    row1.addInCell(1, paragraph("A row is the base structure of the webpage. It allows you to have a complete control of the placement of the content on the page."));
+    row1.addInPage(page);
+    
+    var row2 = new Row("15%", "75%", "10%");
     row2.addInCell(1, rowDoc);
     row2.addInCell(1, addInRowDoc);
     row2.addInCell(1, centerContentDoc);
@@ -78,9 +105,16 @@ function showTab2(){
 }
 
 
-/* Function called when the second tab is clicked */
-function showTab3(){
+/** Clear both content and side navigation */
+function clearContentAndSN(){
     page.clearContent();
+    page.removeSideNavigation();
+}
+
+
+/* Show various tests */
+function showTest(){
+    clearContentAndSN();
     
     /* Sets the actual content of the page */
     var row1 = new Row("33%", "33%", "33%");

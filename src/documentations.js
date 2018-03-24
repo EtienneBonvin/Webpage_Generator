@@ -1,3 +1,7 @@
+
+/**
+* Banner setting documentation.
+*/
 var code4 = new CodeBlock();
 code4.addCode("page.setBanner('../pics/banner.jpg', 'My application');");
 var bannerDoc = doc(
@@ -5,6 +9,10 @@ var bannerDoc = doc(
     paragraph("Each webpage should have its banner. We offer you an easy way to do so by selecting though our predefined banners and tunning it with you own logo and application name."),
     code4.asElement());
 
+
+/**
+* Footer setting documentation.
+*/
 var code5 = new CodeBlock();
 code5.addCode("page.setFooter('Developped by me !');");
 var footerDoc = doc(
@@ -12,6 +20,10 @@ var footerDoc = doc(
     paragraph("You can also set a little footer, a slim line at the bottom at the page, specifying the development team for example."),
     code5.asElement());
 
+
+/**
+* Row creation documentation.
+*/
 var code1 = new CodeBlock();
 code1.addCode("var row = new Row('33%', '33%', '33%');");
 var rowDoc = doc(
@@ -19,6 +31,10 @@ var rowDoc = doc(
     paragraph("When creating a row, you can choose how it will be cut. Each parameters is the width in percentage of the width of the container of each cells."),
     code1.asElement());
 
+
+/**
+* Add element in row documentation.
+*/
 var code2 = new CodeBlock();
 code2.addCode("row.addInCell(1, h2('Hello world !'));");
 var addInRowDoc = doc(
@@ -26,6 +42,10 @@ var addInRowDoc = doc(
     paragraph("Now that your row is created, you can add some elements in a selected cell of the row.\nThe cells are indexed from 0 to N - 1, no actions will be executed if the index given to the function is bigger or equal to N."),
     code2.asElement());
 
+
+/**
+* Center content in row documentation.
+*/
 var code3 = new CodeBlock();
 code3.addCode("row.centerContentInCell(1);");
 code3.addCode("row.centerAllCells();");
