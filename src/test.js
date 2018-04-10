@@ -12,6 +12,7 @@ $('document').ready(function(){
     /* Creates a new Webpage skeleton */
     page = new WebPage();
     page.setFontSize("1.2em");
+    page.setBackgroundColor("#f0f0f5");
     
     /* Adds a banner and an application name to the page */
     page.setBanner("res/pics/logo1.png", "Webpage generator");
@@ -37,7 +38,10 @@ function showPresentation(){
     clearContentAndSN();
     
     var row1 = new Row("10%", "80%", "10%");
-    row1.addInCell(1, image("res/pics/easy.gif"));
+    var easy = image("res/pics/easy.gif");
+    easy.style.border = "1px solid black";
+    easy.style.borderRadius = "5px";
+    row1.addInCell(1, easy);
     row1.centerContentInCell(1);
     row1.addInPage(page);
     
@@ -67,7 +71,11 @@ function showDocumentation(){
     
     page.setSideNavigation("#4073c4", "white",
         new Tab("Page", function(){pageDocumentation()}),
-        new Tab("Row", function(){rowDocumentation()})
+        new Tab("Row", function(){rowDocumentation()}),
+        new Tab("Panel", function()
+        {panelDocumentation()}),
+        new Tab("Tab", function()
+        {tabDocumentation()})
     );
     
     pageDocumentation();
@@ -83,8 +91,14 @@ function pageDocumentation(){
     row1.addInPage(page);
     
     var row2 = new Row("15%", "75%", "10%");
+    row2.addInCell(1, pageDoc);
     row2.addInCell(1, bannerDoc);
     row2.addInCell(1, footerDoc);
+    row2.addInCell(1, topNavDoc);
+    row2.addInCell(1, headBandDoc);
+    row2.addInCell(1, sideNavDoc);
+    row2.addInCell(1, remSideNavDoc);
+    row2.addInCell(1, setFontSizeDoc);
     row2.addInPage(page);
 }
 
@@ -102,6 +116,23 @@ function rowDocumentation(){
     row2.addInCell(1, addInRowDoc);
     row2.addInCell(1, centerContentDoc);
     row2.addInPage(page);
+}
+
+function panelDocumentation(){
+    page.clearContent();
+    var row1 = new Row("5%", "85%", "10%");
+    row1.addInCell(1, h1("Panel"));
+    row1.addInCell(1, paragraph("A panel will allow you to highlight a part of you website with nice borders."));
+    row1.addInPage(page);
+    
+    var row2 = new Row("15%", "75%", "10%");
+}
+
+function tabDocumentation(){
+    page.clearContent();
+    var row1 = new Row("5%", "85%", "10%");
+    row1.addInCell(1, h1("Tab"));
+    row1.addInPage(page);
 }
 
 
