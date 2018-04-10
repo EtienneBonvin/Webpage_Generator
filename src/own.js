@@ -10,6 +10,11 @@ function code(text){
 function CodeBlock(){
     this.container = document.createElement("pre");
     
+    this.container.style.background = "#e0e0eb";
+    this.container.style.border = "1px solid black";
+    this.container.style.borderRadius = "5px";
+    this.container.style.padding = "8px";
+    
     this.addCode = function(text){
         var element = document.createElement("code");
         element.innerHTML = text+"\n";

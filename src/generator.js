@@ -20,15 +20,17 @@ function WebPage(){
     document.head.appendChild(style);
     this.stylesheet = style.sheet;
     
-    $("body").append(this.banner);
-    $("body").append(separation());
-    $("body").append(this.topNavigation);
-    $("body").append(this.headband);
-    $("body").append(separation());
-    $("body").append(this.contentContainer);
-    $("body").append(separation());
-    $("body").append(this.footer);
+    this.container = centeredDivWithId("100%");
     
+    this.container.append(this.banner);
+    this.container.append(separation());
+    this.container.append(this.topNavigation);
+    this.container.append(this.headband);
+    this.container.append(separation()); this.container.append(this.contentContainer);
+    this.container.append(separation());
+    this.container.append(this.footer);
+    
+    $("body").append(this.container);
     
     /**
     * Sets the banner with an image in the upper left corner and an application name on the upper right.
@@ -153,6 +155,16 @@ function WebPage(){
     */
     this.setFontSize = function(size){
         document.body.style.fontSize = size;
+    }
+    
+    
+    /**
+    * Sets the background color for the whole webpage.
+    *
+    * @param String color : the hex string of the color to set.
+    */
+    this.setBackgroundColor = function(color){
+        this.container.style.background = color;   
     }
 }
 
