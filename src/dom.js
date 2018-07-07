@@ -114,6 +114,19 @@ function h2(text){
     return element;
 }
 
+/**
+* Create a header H3.
+*
+* @param String text : the text written in the header.
+*
+* @return a HTML element representing a header H3.
+*/
+function h3(text){
+    var element = document.createElement("h3");
+    element.innerHTML = text;
+    return element;
+}
+
 
 /**
 * Create a header H4.
@@ -152,5 +165,13 @@ function makeElement(elementType, text, className){
     var element = document.createElement(elementType);
     element.innerHTML = text;
     element.className += className;
+    return element;
+}
+
+function hLink(text, address){
+    var element = clickableBlueTitle(text, function(){
+       window.open(address, '_blank'); 
+    });
+    element.style.fontSize = "0.8em";
     return element;
 }

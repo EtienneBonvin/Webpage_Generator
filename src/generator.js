@@ -3,11 +3,13 @@
 * This document contains the WebPage class as well as helper classes and functions.
 */
 
-
 /**
 * Class WebPage.
 */
-function WebPage(){
+function WebPage() {
+    
+    "use strict";
+    
     this.banner = centeredDivWithId("100%", "banner");
     this.topNavigation = centeredDivWithId("100%", "topNavigation");
     this.headband = centeredDivWithId("100%", "headband");
@@ -267,6 +269,14 @@ function Row(...sizes){
     */
     this.setFontSize = function(size){
         this.container.style.fontSize = size;
+    }
+    
+    this.setVisibility = function(visible){
+        if(visible){
+            this.container.style.visibility = "visible";
+        }else{
+            this.container.style.visibility = "hidden";
+        }
     }
     
     
