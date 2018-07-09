@@ -239,6 +239,10 @@ function Row(...sizes){
         }
     }
     
+    this.getCell = function(index){
+        return this.cells[index];
+    }
+    
     
     /**
     * Centers the content of the cells at the given index.
