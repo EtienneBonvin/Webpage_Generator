@@ -352,7 +352,7 @@ function Panel(width, borderStyle, borderRadius){
     * The border disappears, find a way to make it visible again.
     */
     this.addPicture = function(src){
-        var srcImage = image("res/pics/EPFL-Logo.jpg");
+        var srcImage = image(src);
         srcImage.style.width = "100%";
         srcImage.style.height = "100%";
         parenting(this.container, srcImage);
