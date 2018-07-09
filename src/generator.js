@@ -364,7 +364,7 @@ function Panel(width, borderStyle, borderRadius){
     *
     * @return HTMLElement : the created panel.
     */
-    this.toElement = function(){
+    this.asElement = function(){
         return this.container;
     }
 }
